@@ -5,13 +5,11 @@ $(function () {
 
     $('#account input').blur(function () {
 
-        // 数字、字母
-        // var reg = /^[A-Za-z0-9]+$/
         var reg = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/
-        // var reg = /^[\w.\-]+@(?:[a-z0-9]+(?:-[a-z0-9]+)*\.)+[a-z]{2,3}$/
+
         istelemail = reg.test($(this).val())
         if (istelemail) {  // 符合
-            // ajax,获取账号是否可用
+
             no_telemail = false
 
             $.get('/check/', {'account': $(this).val()}, function (response) {
@@ -34,10 +32,6 @@ $(function () {
             $('#account').removeClass('has-success').addClass('has-error')
         }
     })
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
 
     $('#password input').blur(function () {
         if ($(this).val() == '') return
